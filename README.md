@@ -5,6 +5,9 @@
 
 Teste aos candidatos as vagas de desenvolvimento Front-end da UpperSoft.
 
+## Deploy
+https://uppersoft-remix.netlify.app/
+
 
 
 ## Objetivo
