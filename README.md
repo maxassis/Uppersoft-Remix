@@ -1,62 +1,159 @@
-# Welcome to Remix!
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions](https://www.netlify.com/products/functions/)
+![](https://github.com/maxassis/Uppersoft-Remix/blob/master/app/assets/logo-readme.png?raw=true)
 
-## Netlify Setup
+# Teste front-end
 
-1. Install the [Netlify CLI](https://www.netlify.com/products/dev/):
+Teste aos candidatos as vagas de desenvolvimento Front-end da UpperSoft.
 
-```sh
-npm i -g netlify-cli
+
+
+## Objetivo
+
+Simular uma aplicação que consiste em gerenciar usuários de um sistema.
+
+Não será necessário qualquer tipo de validação de acesso ou outros tipos de tratamento, o propósito é simplesmente avaliar a capacidade de desenvolvimento das duas telas propostas com as respectivas integrações.
+
+Ao final será possível apresentar suas habilidades com HTML, CSS, JavaScript, NPM/YARN e integração com APIs.
+
+
+
+## Desafio
+
+Serão duas telas que, juntas, simulam o acesso a um sistema de gerenciamento de usuários.
+
+
+#### Layout
+
+[CLIQUE AQUI PARA VISUALIZAR AS TELAS, CORES E FONTES UTILIZADAS](https://scene.zeplin.io/project/5eb20728d9cc2c193e4ed1df)
+
+- **Login**: Tela contendo cabeçalho, com logo da empresa, e um box com: **título**, campos de **E-mail** e **Senha** e **botão de acesso.**
+- **Lista de Usuários**: Tela contendo cabeçalho, título, lista em coluna contendo 6 cards com as informações do usuário (foto, nome, email e botão de editar) e informação de quantos usuários estão sendo mostrados e a quantidade total.
+
+Todos assets, incluindo as telas do link acima, estão dentro da pasta `assets`.
+
+- Font:
+	- **Nome:** Helvetica Neue (Bold e Medium)
+	- **Title - Primary [LG]:** HelveticaNeue, Bold, 48px
+	- **Title - Primary:** HelveticaNeue, Bold, 32px
+	- **Content - Gray [LG]:** HelveticaNeue, Medium, 22px
+	- **Content - Primary:** HelveticaNeue, Medium, 16px
+	- **Content - Gray:** HelveticaNeue, Medium, 16px
+- Cores utilizadas:
+	- **Primary:** #174DBA
+	- **Gray:** #EFF0F3
+	- **White:** #FFFFFF
+	- **Dark:** #505050
+
+
+#### Pré-requisitos
+
+- Deverá ser apresentado dois arquivos HTML (**index.html** e **lista-usuarios.html**) e demais arquivos de assets.
+- O header *(barra superior azul com a logo)* deverá ser fixa no topo da tela quando houver scroll.
+- A tela deverá ser **responsiva** (desktop e mobile), ajustando o conteúdo conforme o tamanho da tela.
+- Deve ser possível inserir o E-mail e Senha e, após clicar no botão, uma request deverá ser enviada para a API de login, após o response da API **deverá haver o direcionamento para a tela de Lista de Usuários**.
+- Deve ser possível visualizar a lista com os primeiros 6 usuários que a API fake retornar.
+- Deve ser possível visualizar quantos usuários estão sendo mostrados e o total de usuários.
+- O botão de editar, no card de usuário na tela de Lista de Usuários, não precisa executar nenhuma ação, mas deve existir em forma de botão.
+- Não deve ser utilizado nenhum framework de front-end ou estilo (Bootstrap, Tailwind, Vue.js, React ou outros).
+- Não deve ser utilizado CDN para qualquer tipo de biblioteca utilizada.
+- Para simulação dos dados de usuário e login deve ser utilizada a API fake [https://reqres.in/](https://reqres.in/), dados para integração abaixo e informações sobre a API no link.
+
+
+#### Integração com API
+
+##### Login
+
+Deve ser feita uma **request** `POST` para a rota `https://reqres.in/api/login` com o body contendo os **dados de e-mail e senha informados no formulário**. Enquanto a request é feita o usuário deve **aguardar na página**. Após ser finalizada ele deve ser **direcionado para a tela de Lista de Usuários**.
+
+Exemplo do body da requisição:
+```
+	{
+	    "email": "email@uppersoft.com.br",
+	    "password": "senha"
+    }
 ```
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+##### Lista de Usuário
 
-```sh
-npm i -g netlify-cli@latest
+Deve ser feita uma **request** `GET` para a rota `https://reqres.in/api/users?page=1` e os dados da resposta devem ser mostrados na tela da seguinte maneira:
+
+- A lista de usuários deve ser os dados contido no `data`.
+- Texto informativo na parte inferior deve utilizar o `total` e `per_page`.
+
+Exemplo de resposta da API:
+```
+{
+   "page":1,
+   "per_page":6,
+   "total":12,
+   "total_pages":2,
+   "data":[
+      {
+         "id":1,
+         "email":"george.bluth@reqres.in",
+         "first_name":"George",
+         "last_name":"Bluth",
+         "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg"
+      },
+      {
+         "id":2,
+         "email":"janet.weaver@reqres.in",
+         "first_name":"Janet",
+         "last_name":"Weaver",
+         "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg"
+      },
+      {
+         "id":3,
+         "email":"emma.wong@reqres.in",
+         "first_name":"Emma",
+         "last_name":"Wong",
+         "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg"
+      },
+      {
+         "id":4,
+         "email":"eve.holt@reqres.in",
+         "first_name":"Eve",
+         "last_name":"Holt",
+         "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
+      },
+      {
+         "id":5,
+         "email":"charles.morris@reqres.in",
+         "first_name":"Charles",
+         "last_name":"Morris",
+         "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg"
+      },
+      {
+         "id":6,
+         "email":"tracey.ramos@reqres.in",
+         "first_name":"Tracey",
+         "last_name":"Ramos",
+         "avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg"
+      }
+   ],
+   "ad":{
+      "company":"StatusCode Weekly",
+      "url":"http://statuscode.org/",
+      "text":"A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things."
+   }
+}
 ```
 
-2. Sign up and log in to Netlify:
+Para maiores informações sobre como integrar com a API e exemplos de utilização acesse o [site da API](https://reqres.in/).
 
-```sh
-netlify login
-```
 
-3. Create a new site:
+### Plus
 
-```sh
-netlify init
-```
+- Utilização de NPM/Yarn para instalação de bibliotecas.
+- Utilização de pré-processador de CSS (SASS/SCSS)
+- Utilização do Axios para as requests.
+- Utilização dos arquivos SVGs disponibilizados nos assets.
+- Utilização de SessionStorage para armazenar o token recebido no login e permitir o acesso a tela de Lista de Usuários somente se houver token na SessionStorage.
+- Loading enquanto aguarda resposta da API.
 
-## Development
 
-The Remix dev server starts your app in development mode, rebuilding assets on file changes. To start the Remix dev server:
 
-```sh
-npm run dev
-```
+## Como fazer
 
-Open up [http://localhost:3000](http://localhost:3000), and you should be ready to go!
+Você deverá criar um fork desse projeto e realizar todo o desenvolvimento em seu repositório, ao final deve nos enviar o link para que seja feita a validação.
 
-The Netlify CLI builds a production version of your Remix App Server and splits it into Netlify Functions that run locally. This includes any custom Netlify functions you've developed. The Netlify CLI runs all of this in its development mode.
-
-```sh
-netlify dev
-```
-
-Open up [http://localhost:3000](http://localhost:3000), and you should be ready to go!
-
-Note: When running the Netlify CLI, file changes will rebuild assets, but you will not see the changes to the page you are on unless you do a browser refresh of the page. Due to how the Netlify CLI builds the Remix App Server, it does not support hot module reloading.
-
-## Deployment
-
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
-
-```sh
-# preview deployment
-netlify deploy --build
-
-# production deployment
-netlify deploy --build --prod
-```
