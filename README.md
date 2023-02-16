@@ -152,7 +152,6 @@ Para maiores informações sobre como integrar com a API e exemplos de utilizaç
 - Loading enquanto aguarda resposta da API.
 
 
-
 ## Como fazer
 
 Você deverá criar um fork desse projeto e realizar todo o desenvolvimento em seu repositório, ao final deve nos enviar o link para que seja feita a validação.
